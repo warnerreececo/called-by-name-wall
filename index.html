@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Called by Name</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b0c10;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin: 20px;
+      color: #f0f0f0;
+      font-weight: 600;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      width: 6px;
+      height: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 8px white;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .star:hover {
+      transform: scale(1.5);
+      box-shadow: 0 0 20px #ffd700;
+    }
+    .tooltip {
+      display: none;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      max-width: 250px;
+      z-index: 10;
+    }
+    .footer-text {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #dcdcdc;
+      padding: 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>“He counts the stars and knows each of them by name.” <br>– Psalm 147:4 (ERV)</h1>
+
+  <div class="star" style="top: 40%; left: 50%;" 
+       data-tooltip="Jasmine Cheryll Short — Philippians 4:13: 'I can do all things through Christ which strengtheneth me.'"></div>
+
+  <div class="star" style="top: 25%; left: 65%;" 
+       data-tooltip="April Nicole Lendford — One word: Resilient."></div>
+
+  <div class="star" style="top: 20%; left: 30%;" data-tooltip="[Name] — Favorite verse/story/word."></div>
+  <div class="star" style="top: 70%; left: 60%;" data-tooltip="[Name] — Favorite verse/story/word."></div>
+  <div class="star" style="top: 55%; left: 15%;" data-tooltip="[Name] — Favorite verse/story/word."></div>
+
+  <div class="tooltip" id="tooltip"></div>
+
+  <div class="footer-text">
+    With deepest gratitude, I first thank my Lord and Savior Jesus Christ — the giver of this vision and the One who makes all things possible. <br>
+    To those whose names shine here: thank you for not only supporting me, but for helping bring to life the vision God placed in my heart. <br>
+    You are part of this story, this light, and this testimony. <br>
+    — R.A.W. Touch™
+  </div>
+
+  <script>
+    const stars = document.querySelectorAll('.star');
+    const tooltip = document.getElementById('tooltip');
+    stars.forEach(star => {
+      star.addEventListener('mouseenter', (e) => {
+        tooltip.innerHTML = star.getAttribute('data-tooltip');
+        tooltip.style.display = 'block';
+      });
+      star.addEventListener('mousemove', (e) => {
+        tooltip.style.top = (e.clientY + 15) + 'px';
+        tooltip.style.left = (e.clientX + 15) + 'px';
+      });
+      star.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
